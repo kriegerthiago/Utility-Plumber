@@ -77,7 +77,7 @@ namespace Utility_Plumber.Controllers
         [HttpGet("FormatarCPF")]
         public string FormatarCPF(string cpf)
         {
-            var result = "";
+            string? result;
             try
             {
                 if (cpf.Length == 11)
@@ -100,7 +100,7 @@ namespace Utility_Plumber.Controllers
         [HttpGet("FormatarCNPJ")]
         public string FormatarCNPJ(string cnpj)
         {
-            var retorno = "";
+            string? retorno;
             if (cnpj.Length == 14)
             {
                 retorno = Convert.ToUInt64(cnpj).ToString(@"00\.000\.000\\0000\-00");
