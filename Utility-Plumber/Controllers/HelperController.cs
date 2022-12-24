@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ImageProcessor;
+using Microsoft.AspNetCore.Mvc;
 using System.Web;
 
 namespace Utility_Plumber.Controllers
@@ -110,6 +111,16 @@ namespace Utility_Plumber.Controllers
                 retorno = "CNPJ Inválido";
             }
             return retorno;
+        }
+
+
+        [HttpGet("MudarQualidadeImagem")]
+        public ImageFactory MudarQualidadeImagem(string path, int qualidade)
+        {
+            ImageFactory imagem = new ImageFactory();
+            imagem.Load(path);
+            imagem.Quality(qualidade);
+            return imagem;
         }
         #endregion
 
