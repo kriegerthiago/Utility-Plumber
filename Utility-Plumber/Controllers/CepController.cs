@@ -55,6 +55,39 @@ namespace Utility_Plumber.Controllers
 
 
         }
+
+        [HttpGet("ConsultarCepv2")]
+        public string ConsultarCep2(string cep)
+        {
+            try
+            {
+
+            HttpClient client = new HttpClient();
+            string url = $"https://viacep.com.br/ws/{cep}/json/";
+
+
+            var response = client.GetAsync(url).Result;
+            
+            var result = response.Content.ReadAsStringAsync().Result;
+
+                if (response.StatusCode == HttpStatusCode.BadRequest)
+                {
+                    return "Erro 1 - CEP Inválido ou falha na conexão. Tente novamente mais tarde.";
+                }
+                else
+                {
+                    return result;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+
     }
 
 }
